@@ -3,7 +3,7 @@
 #include "VigenereEncoder.h"
 
 #define uint unsigned int
-using namespace std;
+#define string std::string
 
 char isAlphabet(char c) {
     return c >= 'A' && c <= 'Z';
@@ -19,6 +19,8 @@ char decryptCharacterByKey(char textChar, char keyChar) {
 
 string VigenereEncoder::mapEncoding(const string &text, char (charEncodeFunc)(char, char)) {
     string out;
+    if (key.empty())
+        return "";
     for (uint i = 0, j = 0; i < text.length(); i++) {
         char c = toupper(text[i]);
         if (!isAlphabet(c)) {
